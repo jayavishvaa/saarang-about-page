@@ -1,221 +1,228 @@
-import React from 'react';
-import { StyleSheet, Text, View, SectionList, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import {View, Text, StyleSheet, ScrollView,ImageBackground,Image} from 'react-native';
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import StarIcon from './components/starIcon';
-import { Button } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const sections = [
-  {
-    id: 0,
-    title: 'Arts Craft & Fashion events',
-    data: [
-      
-        {id:0, text: 'Fine Arts'},
-        {id:1,text: 'Lifestyle'}
-      ]
-  },
+const image = require('./components/spreadpaint2.jpeg')
 
-  {
-    id: 1,
-    title: 'Food, Anime and Fun',
-    data: [
-      
-        {id:0, text: 'Foodfest'},
-        {id:1,text: 'Anime Fest'}
-      ]
-  },
-
-  {
-    id: 2,
-    title: 'Gaming Events',
-    data: [
-      
-        {id:0, text: 'Gameplex'},
-      ]
-  },
-
-  {
-    id: 3,
-    title: 'Literary Competition',
-    data: [
-      
-        {id:0, text: 'Writing'},
-        {id:1,text: 'WordGames'}
-      ]
-  },
-
-  {
-    id:4,
-    title: 'Media & Design',
-    data: [
-      {id:0, text: 'Design'},
-      {id:1, text: 'Media'}
-    ]
-  }
-]
-
-const extractKey = ({id}) => id
-
-
-
-export default class App extends React.Component {
-
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-     selectAll: false
-     
-    }
-
-    
- }
-  
-  selectAllIcon = () => {
-    this.setState({
-      selectAll: !this.state.selectAll
-    })
-  }
-  
-
-  clickAlert () {
-
-    alert("Item selected")
-    
-
-  }
-  
- 
-  
-  
-
-  renderSectionHeader = ({section}) => {
+export default class App extends Component {
+  render() {
     return (
-      <Text style={styles.sectionHeader}>
-        {section.title}
-      </Text>
-    )
-  }
-  render(){
-    
+      <ScrollView>
+      <View style={styles.container}>
+        <ScrollView style={styles.mainContainer}>
+          <ImageBackground style={styles.topContainer} source={require('./components/fullcolourful.jpg')}> 
+             
+           </ImageBackground>
+           <ImageBackground source={image} style={styles.mainBackground} >
+           <View style={styles.middleContainer}>
+             <Text style={{paddingLeft:60,paddingRight:60}}>
+               IIT Madras is a whole new world - a world that welcomes everyone, however idiosyncratic they may be; 
+               a world that pushesyou to be all that you can be . A world that is, quite simple put, Saarang. Street
+               plays, dance troupes, comedy shows, lectures, workshops, musicians, magicians - Saarang's got it all.
+               There's energy, exhilaration, competition, camaraderie and pure, unadulterated fun. Unlimited. This 
+               year too, we call out to those gypsy souls who have felt the all too familar tug to transverse through
+               terrains unfamiliar, to roam around city streets, valleys and creeks; we call out to those who are 
+               unafraid to let go. Come, celebrate the spirit of wanderlust with Saarang, South India's largest 
+               cultural festival.
+             </Text>
+           </View>
+           <View style={styles.iconContainer}>
+             <View style={styles.iconRow}>
+             <Entypo 
+              name="google-play" 
+              size={28} 
+              onPress={() => alert('google playstore')}
+              style={{height:40,width:40,paddingRight:10,marginRight:100,marginLeft:20}}
+              color="black" />
 
-     
-  return (
-    <View style={styles.container}>
-      <View style={styles.topView}>
-        
-        <View style={styles.topHigh}>
-        <TouchableOpacity>
-        <AntDesign 
-        name="check" 
-        size={26} 
-        color="white" 
-        onPress={() => this.clickAlert()} /></TouchableOpacity>
+             <FontAwesome 
+              name="facebook" 
+              size={28} 
+              onPress={() => alert('facebook')}
+              style={{height:40,width:40,paddingRight:10,marginRight:100,paddingLeft:10}}
+              color="black" />
 
-        <TouchableOpacity>
+             <AntDesign 
+              name="twitter" 
+              size={28} 
+              onPress={() => alert(' twitter')}
+              style={{height:40,width:40,marginRight:20,paddingLeft:10}}
+              color="black" />
 
-        <Text style={{color:'#fff', fontSize:17, fontFamily:'sans-serif-light', fontWeight:'200'}} onPress={this.selectAllIcon}>
-              Select All</Text>
-        </TouchableOpacity>      
-        </View>
-        
+             </View>
+             <View style={styles.textIconRow}>
+               <Text style={{height:40,paddingRight:80}}>Play Store</Text>
+               <Text style={{paddingRight:60}}>Facebook</Text>
+               <Text style={{paddingLeft:30}}>Twitter</Text>
+             </View>
 
-        <View style={styles.topMiddle}>
-          <Text style={{color:'white', fontWeight:'bold', fontSize:27, fontFamily:'sans-serif-light'}}>EVENT CATEGORIES</Text>
-          <Text style={{color:'white', fontWeight:'300', fontSize:15, fontFamily:'sans-serif-thin'}}>You'll receive updates for only these topics</Text>
+             <View style={styles.secondIconRow}>
 
-        </View>
+             <AntDesign 
+              name="instagram" 
+              onPress={() => alert('instagram')}
+              style={{height:40,width:40,paddingRight:10,marginRight:100,marginLeft:30}}
+              size={28} 
+              color="#000000" />
+
+             <Entypo 
+              name="youtube"
+              onPress={() => alert('youtube')}
+              style={{height:40,width:50,paddingRight:10,marginRight:100,paddingLeft:10}} 
+              size={28} 
+              color="black" />
+            
+             <FontAwesome  
+              name="linkedin" 
+              onPress={() => alert('linkedin')}
+              style={{height:40,width:40,marginRight:30,paddingLeft:10}}
+              size={28} 
+              color="black" />
+             </View>
+
+             <View style={styles.textIconRow}>
+               <Text style={{height:40,paddingRight:80}}>Instagram</Text>
+               <Text style={{paddingRight:60}}>Youtube</Text>
+               <Text style={{paddingLeft:30}}>Linkedin</Text>
+             </View>
+
+          <View style={styles.thirdIconRow}>
+           <MaterialIcons 
+            name="email"
+            onPress={() => alert('email')}
+            size={28} 
+            style={{height:40,width:40,paddingRight:10,marginRight:100,marginLeft:30}}
+            color="black" />
+
+           <AntDesign 
+            name="google" 
+            onPress={() => alert('google')}
+            size={28} 
+            style={{height:40,width:50,paddingRight:10,marginRight:100,paddingLeft:10}}
+            color="black" />
+
+           <MaterialCommunityIcons 
+            name="web" 
+            onPress={() => alert('web')}
+            size={28} 
+            style={{height:40,width:40,marginRight:20,paddingLeft:10}}
+            color="black" />
+
+           </View>
+
+           <View style={styles.textIconRow}>
+               <Text style={{height:40,paddingRight:110,paddingLeft:10}}>E-mail</Text>
+               <Text style={{paddingRight:70}}>Google</Text>
+               <Text style={{paddingLeft:30}}>Website</Text>
+             </View>
+
+           </View>
+
+           <View style={styles.endContainer}>
+
+           <Entypo 
+            name="share" 
+            size={28} 
+            onPress={() => alert('Share this App')}
+            style={{marginTop:100,padding:10}}
+            color="black" />
+
+            <Text style={{marginTop:115}}>Share this app</Text>
+
+            <MaterialIcons 
+             name="file-download" 
+             onPress={() => alert('Update this App')}
+             style={{marginTop:100,padding:10,paddingLeft:90}}
+             size={28} 
+             color="black" />
+
+            <Text style={{marginTop:115}}>Update this app</Text>
+
+
+           </View>
+           </ImageBackground>
+
+
+        </ScrollView>
+
       </View>
 
-      <SectionList
+      </ScrollView>
 
-      style= {styles.sectionContainer}
-      sections = {sections}
-      renderItem ={({item}) =>  {
-        
-    
-        return (
-          <View style={styles.dataContainer}>
-            
-              <Text style={styles.row}>
-                  {item.text}
-                  
-              </Text>
-              <StarIcon selectAll={this.state.selectAll}/>
-              
-          </View>
-        );
-      }}
-      renderSectionHeader={this.renderSectionHeader}
-      keyExtractor={extractKey}
-      
-      />
-    </View>
-  );
+    )
   }
 }
 
-const styles = StyleSheet.create({
+const styles= StyleSheet.create({
+
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    
+    flex:1,
+    padding:10,
+    paddingTop:20,
+ },
+
+  mainContainer: {
+   height:650,
+   backgroundColor:'white',
+   color:'blue',
+   borderWidth:4,
+   borderColor:'black',
+ },
+
+ mainBackground: {
+   opacity:0.4,
+ },
+
+ topContainer: {
+   height:100,
+   backgroundColor:'transparent',
+   justifyContent:'center',
+   alignItems:'center',
+ },
+
+ middleContainer: {
+   height:400,
+   backgroundColor:'transparent',
+   justifyContent:'center',
+   alignItems:'center'
+ },
+
+ iconContainer: {
+   height:250,
+   borderTopColor:'black',
+   borderTopWidth:1,
+   borderBottomColor:'black',
+   borderBottomWidth:1,
+   alignItems:'center',
+   
+ },
+
+ iconRow: {
+  marginTop:20,
+  flexDirection:'row',
+   },
+
+  textIconRow: {
+    flexDirection:'row',
   },
 
-  topView: {
-    backgroundColor:'#8b0000',
+  secondIconRow: {
+    flexDirection:'row',
+  },
+
+  thirdIconRow: {
+    flexDirection:'row',
+  },
+
+  endContainer: {
 
     height:150,
-    
-    },
-    topHigh: {
-      justifyContent:'space-between',
-      marginTop:30,
-      flexDirection:'row',
-      paddingRight:17,
-      paddingLeft:15,
-    },
-
-    topMiddle: {
-      justifyContent:'center',
-      alignItems:'center',
-      marginTop:20,
-    },
-
-    sectionContainer: {
-
-      flex:1,
-      padding:10,
-      
-    },
+    flexDirection:'row',
+  }
 
 
-    dataContainer: {
-
-      flexDirection:'row',
-      marginVertical: 8,
-      borderColor:'#000000',
-      borderWidth:1,
-      borderRadius:10,
-      justifyContent:'space-between',
-      marginTop:20,
-      
-
-    },
-    row : {
-
-      
-      padding:10,
-      fontSize:24,
-    },
-
-    
-
-    sectionHeader: {
-
-      fontSize:30,
-      paddingLeft:10,
-    }
-
-    
-});
+})
